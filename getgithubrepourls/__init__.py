@@ -8,16 +8,25 @@ class FromBaseURL(object):
         self.base_url = base_url
 
         self.__github_urls = []
-        self.__prepare_github_urls()
-
         self.urls = []
+
+        self.__prepare_github_urls()
         self.__prepare_urls()
 
     def __prepare_urls(self):
         r = requests.get(self.base_url)
         soup = BeautifulSoup(r.content, "html.parser")
 
-    def __prepare_github_urls(self):
+        for i in soup.prettify().splitlines():
+            for j in i.split('"'):
+                if j.startswith("http"):
+                    new_url = j
+                elif j.startswith("/"):
+                    new_url = urljoin(self.base_url, j)
+                else:
+                    continue
+
+    def __prepare_github_urls(self) -> None:
         urls = [
             "topics",
             "features",
@@ -28,8 +37,18 @@ class FromBaseURL(object):
             "search"
         ]
 
-        for i in range(len(urls)):
-            urls[i] = "/{}/".format(urls[i])
-
         for url in urls:
             self.__github_urls.append("/{}/".format(url))
+
+    def __is_repo_url(self, url: str) -> bool:
+        if not url.startswith("https://github.com/"):
+            return False
+
+        if not url.count("/") == 4:
+            return False
+
+        for github_url in self.__github_urls:
+            if github_url in url:
+                return False
+
+        return True
