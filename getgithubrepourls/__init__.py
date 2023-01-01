@@ -41,6 +41,7 @@ class FromBaseURL(object):
             "marketplace",
             "codespaces",
             "pricing",
+            "collections",
         ]
 
         for url in urls:
@@ -83,6 +84,31 @@ class TopicUrls(object):
                         continue
 
                     if "/topics/" in new_url and not new_url in self.urls:
+                        self.urls.append(new_url)
+
+
+class CollectionUrls(object):
+    def __init__(self) -> None:
+        self.urls = []
+        self.__prepare_urls(
+            [
+                "https://github.com/collections",
+            ]
+        )
+
+    def __prepare_urls(self, urls) -> None:
+        for url in urls:
+            r = requests.get(url)
+            soup = BeautifulSoup(r.content, "html.parser")
+
+            for i in soup.prettify().splitlines():
+                for j in i.split('"'):
+                    if j.startswith("/"):
+                        new_url = urljoin(url, j)
+                    else:
+                        continue
+
+                    if "/collections/" in new_url and not new_url in self.urls:
                         self.urls.append(new_url)
 
 
