@@ -66,7 +66,7 @@ class TopicUrls(object):
         self.__prepare_urls(
             [
                 "https://github.com/topics",
-                "https://github.com/"
+                "https://github.com/explore",
             ]
         )
 
