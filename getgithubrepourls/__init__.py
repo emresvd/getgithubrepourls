@@ -55,3 +55,24 @@ class FromBaseURL(object):
                 return False
 
         return True
+
+
+class TopicUrls(object):
+    def __init__(self) -> None:
+        self.base_url = "https://github.com/topics"
+        self.urls = []
+        self.__prepare_urls()
+
+    def __prepare_urls(self) -> None:
+        r = requests.get(self.base_url)
+        soup = BeautifulSoup(r.content, "html.parser")
+
+        for i in soup.prettify().splitlines():
+            for j in i.split('"'):
+                if j.startswith("/"):
+                    new_url = urljoin(self.base_url, j)
+                else:
+                    continue
+
+                if "/topics/" in new_url and not new_url in self.urls:
+                    self.urls.append(new_url)
