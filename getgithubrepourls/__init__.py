@@ -26,6 +26,9 @@ class FromBaseURL(object):
                 else:
                     continue
 
+                if self.__is_repo_url(new_url) and not new_url in self.urls:
+                    self.urls.append(new_url)
+
     def __prepare_github_urls(self) -> None:
         urls = [
             "topics",
