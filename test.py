@@ -7,4 +7,8 @@ topic_urls = TopicUrls()
 
 for url in topic_urls.urls:
     fromBaseURL = FromBaseURL(url)
-    print(url.split("/")[-1], fromBaseURL.urls)
+    print(
+        url.split("/")[-1],
+        fromBaseURL.urls,
+        len(fromBaseURL.urls)
+    )
