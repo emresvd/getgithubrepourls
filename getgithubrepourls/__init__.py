@@ -3,7 +3,7 @@ import requests
 from urllib.parse import urljoin
 
 
-class RepoUrls(object):
+class FromBaseURL(object):
     def __init__(self, base_url: str):
         self.base_url = base_url
         self.urls = []
@@ -31,4 +31,4 @@ class RepoUrls(object):
         print(urls)
 
 if __name__ == "__main__":
-    repo_urls = RepoUrls("https://github.com/topics/python")
+    repo_urls = FromBaseURL("https://github.com/topics/python")
