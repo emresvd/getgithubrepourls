@@ -62,23 +62,28 @@ class FromBaseURL(object):
 
 class TopicUrls(object):
     def __init__(self) -> None:
-        self.base_url = "https://github.com/topics"
         self.urls = []
-        self.__prepare_urls()
+        self.__prepare_urls(
+            [
+                "https://github.com/topics",
+                "https://github.com/"
+            ]
+        )
 
-    def __prepare_urls(self) -> None:
-        r = requests.get(self.base_url)
-        soup = BeautifulSoup(r.content, "html.parser")
+    def __prepare_urls(self, urls) -> None:
+        for url in urls:
+            r = requests.get(url)
+            soup = BeautifulSoup(r.content, "html.parser")
 
-        for i in soup.prettify().splitlines():
-            for j in i.split('"'):
-                if j.startswith("/"):
-                    new_url = urljoin(self.base_url, j)
-                else:
-                    continue
+            for i in soup.prettify().splitlines():
+                for j in i.split('"'):
+                    if j.startswith("/"):
+                        new_url = urljoin(url, j)
+                    else:
+                        continue
 
-                if "/topics/" in new_url and not new_url in self.urls:
-                    self.urls.append(new_url)
+                    if "/topics/" in new_url and not new_url in self.urls:
+                        self.urls.append(new_url)
 
 
 class FromExplore(FromBaseURL):
