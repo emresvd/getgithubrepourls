@@ -37,7 +37,8 @@ class FromBaseURL(object):
             "_graphql",
             "sponsors",
             "explore",
-            "search"
+            "search",
+            "marketplace",
         ]
 
         for url in urls:
