@@ -76,3 +76,8 @@ class TopicUrls(object):
 
                 if "/topics/" in new_url and not new_url in self.urls:
                     self.urls.append(new_url)
+
+
+class FromExplore(FromBaseURL):
+    def __init__(self) -> None:
+        super().__init__("https://github.com/explore")
