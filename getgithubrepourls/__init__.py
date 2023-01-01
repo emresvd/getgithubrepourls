@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 
 
 class FromBaseURL(object):
-    def __init__(self, base_url: str):
+    def __init__(self, base_url: str) -> None:
         self.base_url = base_url
 
         self.__github_urls = []
