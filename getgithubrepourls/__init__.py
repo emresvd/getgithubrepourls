@@ -39,6 +39,8 @@ class FromBaseURL(object):
             "explore",
             "search",
             "marketplace",
+            "codespaces",
+            "pricing",
         ]
 
         for url in urls:
