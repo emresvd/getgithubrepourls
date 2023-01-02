@@ -1,5 +1,7 @@
 from getgithubrepourls import *
 
+PrintSettings.change(True)
+
 urls = AllUrlsWithMore()
 
 print(urls.urls)
