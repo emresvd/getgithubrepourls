@@ -2,7 +2,8 @@ from getgithubrepourls import (
     FromBaseURL,
     TopicUrls,
     FromExplore,
-    CollectionUrls
+    CollectionUrls,
+    FromCollections
 )
 
 fromBaseURL = FromBaseURL("https://github.com/topics/python")
@@ -31,4 +32,11 @@ print(
     "collectionUrls",
     collectionUrls.urls,
     len(collectionUrls.urls)
+)
+
+fromCollections = FromCollections()
+print(
+    "fromCollections",
+    fromCollections.urls,
+    len(fromCollections.urls)
 )
