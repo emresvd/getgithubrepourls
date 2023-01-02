@@ -231,3 +231,13 @@ class AllUrls(object):
         for user in userUrls.urls:
             fromUser = FromUser(user)
             self.urls += fromUser.urls
+
+
+class AllUrlsWithMore(AllUrls):
+    def __init__(self) -> None:
+        super().__init__()
+
+        userUrls = UserUrls()
+        userUrls.more_users(self.urls)
+
+        self.more_repos_from_users(userUrls)
