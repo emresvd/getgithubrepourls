@@ -203,9 +203,9 @@ class UserUrls(object):
         pass
 
 
-class FromExplore(FromBaseURL):
+class FromTrending(FromBaseURL):
     def __init__(self) -> None:
-        super().__init__("https://github.com/explore")
+        super().__init__("https://github.com/trending")
 
 
 class AllUrls(object):
