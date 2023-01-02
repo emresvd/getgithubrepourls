@@ -201,7 +201,9 @@ class UserUrls(object):
 
     def more_users(self, urls: list) -> None:
         for url in urls:
-            self.urls.append("/".join(url.split("/")[:-1]))
+            new_user_url = "/".join(url.split("/")[:-1])
+            if not new_user_url in self.urls:
+                self.urls.append("/".join(url.split("/")[:-1]))
 
 
 class FromTrending(FromBaseURL):
