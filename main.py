@@ -9,3 +9,5 @@ print(len(urls.urls))
 
 with open("urls.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(urls.urls))
+
+PrintSettings.delete()
