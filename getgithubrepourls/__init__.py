@@ -189,6 +189,9 @@ class UserUrls(object):
 
         return True
 
+    def more_users(self):
+        pass
+
 
 class FromTrend:
     pass
