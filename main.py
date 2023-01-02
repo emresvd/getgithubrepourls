@@ -1,18 +1,5 @@
-from getgithubrepourls import (
-    FromCollections,
-    FromTopics
-)
+from getgithubrepourls import *
 
-fromCollections = FromCollections()
-print(
-    "fromCollections",
-    fromCollections.urls,
-    len(fromCollections.urls)
-)
-
-fromTopics = FromTopics()
-print(
-    "fromTopics",
-    fromTopics.urls,
-    len(fromTopics.urls)
-)
+a = FromBaseURL("https://github.com/gvanrossum?tab=repositories")
+print("\n".join(a.urls))
+print(len(a.urls))

@@ -42,6 +42,8 @@ class FromBaseURL(object):
             "codespaces",
             "pricing",
             "collections",
+            "settings",
+            "contact",
         ]
 
         for url in urls:
