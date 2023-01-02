@@ -54,6 +54,8 @@ class FromBaseURL(object):
             "team",
             "customer-stories",
             "readme",
+            "trending",
+            "events",
         ]:
             github_urls.append("/{}".format(url))
 
