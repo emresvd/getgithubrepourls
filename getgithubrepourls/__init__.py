@@ -27,6 +27,8 @@ class FromBaseURL(object):
 
                 if self.__is_repo_url(new_url) and not new_url in self.urls:
                     self.urls.append(new_url)
+                    if PrintSettings.get():
+                        print(new_url)
 
     @staticmethod
     def get_github_urls() -> list:
