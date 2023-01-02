@@ -203,5 +203,6 @@ class UserUrls(object):
         pass
 
 
-class FromTrend:
-    pass
+class FromExplore(FromBaseURL):
+    def __init__(self) -> None:
+        super().__init__("https://github.com/explore")
