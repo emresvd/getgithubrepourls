@@ -27,8 +27,6 @@ class FromBaseURL(object):
 
                 if self.__is_repo_url(new_url) and not new_url in self.urls:
                     self.urls.append(new_url)
-                    if PrintSettings.get():
-                        print(new_url)
 
     @staticmethod
     def get_github_urls() -> list:
@@ -243,27 +241,3 @@ class AllUrlsWithMore(AllUrls):
         userUrls.more_users(self.urls)
 
         self.more_repos_from_users(userUrls)
-
-
-class PrintSettings:
-    @staticmethod
-    def change(p: bool) -> None:
-        with open("print", "w") as f:
-            f.write(str(int(p)))
-
-    @staticmethod
-    def get() -> bool:
-        try:
-            with open("print", "r") as f:
-                return bool(int(f.read()))
-        except FileNotFoundError:
-            return False
-
-    @staticmethod
-    def delete() -> None:
-        try:
-            from os import remove
-            remove("print")
-            del remove
-        except FileNotFoundError:
-            pass
