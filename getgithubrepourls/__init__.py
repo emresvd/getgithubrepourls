@@ -227,10 +227,7 @@ class AllUrls(object):
         self.urls += fromCollections.urls
         self.urls += fromTrending.urls
 
-        self.__from_user()
-
-    def __from_user(self) -> None:
-        userUrls = UserUrls()
+    def more_repos_from_users(self, userUrls: UserUrls) -> None:
         for user in userUrls.urls:
             fromUser = FromUser(user)
             self.urls += fromUser.urls
