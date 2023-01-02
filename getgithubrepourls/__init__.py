@@ -148,3 +148,28 @@ class FromTopics(TopicUrls):
 class FromUser(FromBaseURL):
     def __init__(self, username: str) -> None:
         super().__init__("https://github.com/{}?tab=repositories".format(username))
+
+
+class UserUrls(object):
+    def __init__(self) -> None:
+        self.urls = []
+        self.__prepare_urls(
+            [
+                "",
+            ]
+        )
+
+    def __prepare_urls(self, urls) -> None:
+        for url in urls:
+            r = requests.get(url)
+            soup = BeautifulSoup(r.content, "html.parser")
+
+            for i in soup.prettify().splitlines():
+                for j in i.split('"'):
+                    if j.startswith("/"):
+                        new_url = urljoin(url, j)
+                    else:
+                        continue
+
+                    if new_url.count("/") == 3 and not new_url in self.urls:
+                        self.urls.append(new_url)
