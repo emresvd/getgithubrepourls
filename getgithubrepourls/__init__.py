@@ -206,3 +206,26 @@ class UserUrls(object):
 class FromExplore(FromBaseURL):
     def __init__(self) -> None:
         super().__init__("https://github.com/explore")
+
+
+class AllUrls(object):
+    def __init__(self) -> None:
+        self.urls = []
+        self.__prepare_urls()
+
+    def __prepare_urls(self) -> None:
+        fromExplore = FromExplore()
+        fromTopics = FromTopics()
+        fromCollections = FromCollections()
+
+        self.urls += fromExplore.urls
+        self.urls += fromTopics.urls
+        self.urls += fromCollections.urls
+
+        self.__fromUser()
+
+    def __fromUser(self) -> None:
+        userUrls = UserUrls()
+        for user in userUrls.urls:
+            fromUser = FromUser(user)
+            self.urls += fromUser.urls
