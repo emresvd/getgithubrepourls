@@ -46,8 +46,16 @@ class FromBaseURL(object):
             "collections",
             "settings",
             "contact",
+            "login",
+            ">",
+            "opensearch.xml",
+            "manifest.json",
+            "signup",
+            "team",
+            "customer-stories",
+            "readme",
         ]:
-            github_urls.append("/{}/".format(url))
+            github_urls.append("/{}".format(url))
 
         return github_urls
 
@@ -183,7 +191,7 @@ class UserUrls(object):
         if url.count("/") != 3:
             return False
 
-        for github_url in self.__github_urls:
+        for github_url in FromBaseURL.get_github_urls():
             if github_url in url:
                 return False
 

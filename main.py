@@ -1,5 +1,5 @@
 from getgithubrepourls import *
 
-a = FromUser("gvanrossum")
-print("\n".join(a.urls))
-print(len(a.urls))
+users = UserUrls()
+print("\n".join(users.urls))
+print(len(users.urls))
