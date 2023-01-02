@@ -157,7 +157,7 @@ class UserUrls(object):
         self.urls = []
         self.__prepare_urls(
             [
-                "",
+                "https://github.com/trending/developers",
             ]
         )
 
@@ -188,3 +188,7 @@ class UserUrls(object):
                 return False
 
         return True
+
+
+class FromTrend:
+    pass
