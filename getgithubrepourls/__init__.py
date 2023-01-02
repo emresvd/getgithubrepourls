@@ -143,3 +143,8 @@ class FromTopics(TopicUrls):
         for url in self.topic_urls:
             fromBaseURL = FromBaseURL(url)
             self.urls += fromBaseURL.urls
+
+
+class FromUser(FromBaseURL):
+    def __init__(self, username: str) -> None:
+        super().__init__("https://github.com/{}?tab=repositories".format(username))
