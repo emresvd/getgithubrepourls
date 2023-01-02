@@ -12,7 +12,7 @@ class FromBaseURL(object):
 
         self.__prepare_urls()
 
-    def __prepare_urls(self):
+    def __prepare_urls(self) -> None:
         r = requests.get(self.base_url)
         soup = BeautifulSoup(r.content, "html.parser")
 
@@ -186,7 +186,7 @@ class UserUrls(object):
                     if self.__is_user_url(new_url) and not new_url in self.urls:
                         self.urls.append(new_url)
 
-    def __is_user_url(self, url):
+    def __is_user_url(self, url: str) -> bool:
         if not url.startswith("https://github.com/"):
             return False
 
@@ -199,7 +199,7 @@ class UserUrls(object):
 
         return True
 
-    def more_users(self):
+    def more_users(self) -> None:
         pass
 
 
