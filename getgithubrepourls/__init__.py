@@ -110,7 +110,7 @@ class CollectionUrls(object):
             ]
         )
 
-    def __prepare_urls(self, urls) -> None:
+    def __prepare_urls(self, urls: list) -> None:
         for url in urls:
             r = requests.get(url)
             soup = BeautifulSoup(r.content, "html.parser")
@@ -171,7 +171,7 @@ class UserUrls(object):
             ]
         )
 
-    def __prepare_urls(self, urls) -> None:
+    def __prepare_urls(self, urls: list) -> None:
         for url in urls:
             r = requests.get(url)
             soup = BeautifulSoup(r.content, "html.parser")
