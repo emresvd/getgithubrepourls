@@ -199,8 +199,9 @@ class UserUrls(object):
 
         return True
 
-    def more_users(self) -> None:
-        pass
+    def more_users(self, urls: list) -> None:
+        for url in urls:
+            self.urls.append("/".join(url.split("/")[:-1]))
 
 
 class FromTrending(FromBaseURL):
