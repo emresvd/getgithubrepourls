@@ -7,10 +7,10 @@ class FromBaseURL(object):
     def __init__(self, base_url: str) -> None:
         self.base_url = base_url
 
-        self.__github_urls = []
+        self.__github_urls = self.get_github_urls()
         self.urls = []
 
-        self.__prepare_github_urls()
+        self.get_github_urls()
         self.__prepare_urls()
 
     def __prepare_urls(self):
@@ -29,8 +29,11 @@ class FromBaseURL(object):
                 if self.__is_repo_url(new_url) and not new_url in self.urls:
                     self.urls.append(new_url)
 
-    def __prepare_github_urls(self) -> None:
-        urls = [
+    @staticmethod
+    def get_github_urls() -> list:
+        github_urls = []
+
+        for url in [
             "topics",
             "features",
             "enterprise",
@@ -44,10 +47,10 @@ class FromBaseURL(object):
             "collections",
             "settings",
             "contact",
-        ]
+        ]:
+            github_urls.append("/{}/".format(url))
 
-        for url in urls:
-            self.__github_urls.append("/{}/".format(url))
+        return github_urls
 
     def __is_repo_url(self, url: str) -> bool:
         if not url.startswith("https://github.com/"):
