@@ -10,7 +10,6 @@ class FromBaseURL(object):
         self.__github_urls = self.get_github_urls()
         self.urls = []
 
-        self.get_github_urls()
         self.__prepare_urls()
 
     def __prepare_urls(self):
