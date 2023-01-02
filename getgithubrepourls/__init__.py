@@ -115,3 +115,16 @@ class CollectionUrls(object):
 class FromExplore(FromBaseURL):
     def __init__(self) -> None:
         super().__init__("https://github.com/explore")
+
+
+class FromCollections(CollectionUrls):
+    def __init__(self) -> None:
+        super().__init__()
+        self.collection_urls = self.urls
+        self.urls = []
+        self.__prepare_urls_()
+
+    def __prepare_urls_(self) -> None:
+        for url in self.collection_urls:
+            fromBaseURL = FromBaseURL(url)
+            self.urls += fromBaseURL.urls
