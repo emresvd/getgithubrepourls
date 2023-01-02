@@ -128,3 +128,16 @@ class FromCollections(CollectionUrls):
         for url in self.collection_urls:
             fromBaseURL = FromBaseURL(url)
             self.urls += fromBaseURL.urls
+
+
+class FromTopics(TopicUrls):
+    def __init__(self) -> None:
+        super().__init__()
+        self.topic_urls = self.urls
+        self.urls = []
+        self.__prepare_urls_()
+
+    def __prepare_urls_(self) -> None:
+        for url in self.topic_urls:
+            fromBaseURL = FromBaseURL(url)
+            self.urls += fromBaseURL.urls
