@@ -217,10 +217,12 @@ class AllUrls(object):
         fromExplore = FromExplore()
         fromTopics = FromTopics()
         fromCollections = FromCollections()
+        fromTrending = FromTrending()
 
         self.urls += fromExplore.urls
         self.urls += fromTopics.urls
         self.urls += fromCollections.urls
+        self.urls += fromTrending.urls
 
         self.__from_user()
 
