@@ -222,9 +222,9 @@ class AllUrls(object):
         self.urls += fromTopics.urls
         self.urls += fromCollections.urls
 
-        self.__fromUser()
+        self.__from_user()
 
-    def __fromUser(self) -> None:
+    def __from_user(self) -> None:
         userUrls = UserUrls()
         for user in userUrls.urls:
             fromUser = FromUser(user)
