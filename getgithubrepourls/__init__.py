@@ -55,7 +55,7 @@ class FromBaseURL(object):
         if not url.startswith("https://github.com/"):
             return False
 
-        if not url.count("/") == 4:
+        if url.count("/") != 4:
             return False
 
         for github_url in self.__github_urls:
@@ -173,5 +173,18 @@ class UserUrls(object):
                     else:
                         continue
 
-                    if new_url.count("/") == 3 and not new_url in self.urls:
+                    if self.__is_user_url(new_url) and not new_url in self.urls:
                         self.urls.append(new_url)
+
+    def __is_user_url(self, url):
+        if not url.startswith("https://github.com/"):
+            return False
+
+        if url.count("/") != 3:
+            return False
+
+        for github_url in self.__github_urls:
+            if github_url in url:
+                return False
+
+        return True
