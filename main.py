@@ -10,7 +10,7 @@ if sys.argv[-1] == "main.py":
 
 if sys.argv[-1] == "clean":
     import shutil
-    for i in ["build", "dist", "getgithubrepourls.egg-info", "files"]:
+    for i in ["build", "dist", "getgithubrepourls.egg-info"]:
         shutil.rmtree(i)
 
 if sys.argv[-1] == "build":
