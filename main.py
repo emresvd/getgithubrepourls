@@ -1,9 +1,22 @@
-from getgithubrepourls import *
+import sys
 
-urls = AllUrlsWithMore()
+if sys.argv[-1] == "main.py":
+    from getgithubrepourls import *
 
-print(urls.urls)
-print(len(urls.urls))
+    urls = AllUrlsWithMore()
 
-with open("urls.txt", "w", encoding="utf-8") as f:
-    f.write("\n".join(urls.urls))
+    print(urls.urls)
+    print(len(urls.urls))
+
+if sys.argv[-1] == "clean":
+    import shutil
+    for i in ["build", "dist", "getgithubrepourls.egg-info", "files"]:
+        shutil.rmtree(i)
+
+if sys.argv[-1] == "build":
+    import os
+    os.system("python setup.py sdist bdist_wheel")
+
+if sys.argv[-1] == "upload":
+    import os
+    os.system("twine upload dist/*")
