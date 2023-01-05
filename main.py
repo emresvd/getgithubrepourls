@@ -1,9 +1,9 @@
 import sys
 
 if sys.argv[-1] == "main.py":
-    from getgithubrepourls import *
+    import getgithubrepourls
 
-    urls = AllUrlsWithMore()
+    urls = getgithubrepourls.FromExplore()
 
     print(urls.urls)
     print(len(urls.urls))
