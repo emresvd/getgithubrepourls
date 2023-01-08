@@ -1,6 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urljoin
+import os.path
+
+
+if os.path.isfile("ggru.print"):
+    p = True
 
 
 class FromBaseURL(object):
@@ -27,6 +32,8 @@ class FromBaseURL(object):
 
                 if self.__is_repo_url(new_url) and not new_url in self.urls:
                     self.urls.append(new_url)
+                    if p:
+                        print(new_url)
 
     @staticmethod
     def get_github_urls() -> list:

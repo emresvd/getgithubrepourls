@@ -2,10 +2,7 @@ import sys
 
 if sys.argv[-1] == "main.py":
     import getgithubrepourls
-
     urls = getgithubrepourls.FromExplore()
-
-    print(urls.urls)
     print(len(urls.urls))
 
 if sys.argv[-1] == "clean":
