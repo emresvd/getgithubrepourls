@@ -4,6 +4,7 @@ from urllib.parse import urljoin
 import os.path
 
 
+p = False
 if os.path.isfile("ggru.print"):
     p = True
 

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='getgithubrepourls',
-    version='1.0.1',
+    version='1.0.2',
     author='emresvd',
     packages=find_packages(),
     install_requires=[
